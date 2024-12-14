@@ -16,7 +16,18 @@
         ];
 */
 function validateMove(move, board) {
-    // Implement this at the end if you have time, otherwise you can help your teammates!
+    const [row, col] = move.split(',').map(Number);
+    if (isNaN(row) || isNaN(col) || row < 1 || row > 3 || col < 1 || col > 3) {
+        console.log('Try again...');
+        return false;
+    }
+    const rowIndex = row - 1;
+    const colIndex = col - 1;
+
+    if (board[rowIndex][colIndex] !== '_') {
+        console.log('Try again...');
+        return false;
+    }
     return true;
 }
 
@@ -32,5 +43,14 @@ function validateMove(move, board) {
             - Return true
 */
 export function makeMove(board, move, player) {
-    return false;
+    if (!validateMove(move, board)) {
+        return false;
+    }
+    const [row, col] = move.split(',').map(Number);
+    const rowIndex = row - 1;
+    const colIndex = col - 1;
+
+    board[rowIndex][colIndex] = player;
+
+    return true;
 }
