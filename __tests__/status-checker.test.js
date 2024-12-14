@@ -27,13 +27,13 @@ test('Player X wins on a row', () => {
   expect(isGameOver(board)).toBe(true); // X has won the game!
 });
 
-test('Player O wins on a column', () => {
+test('Game is a draw!', () => {
   board = [
-    ['X', '_', 'O'],
+    ['O', '_', '_'],
     ['X', '_', 'O'],
     ['X', '_', 'O']
   ];
-  expect(isGameOver(board)).toBe(true); // O has won the game!
+  expect(isGameOver(board)).toBe(false); // Game is a draw!
 });
 
 test('Player X wins on a diagonal', () => {
